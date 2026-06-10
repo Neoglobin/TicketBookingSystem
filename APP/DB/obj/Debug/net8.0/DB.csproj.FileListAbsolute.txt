@@ -1,0 +1,13 @@
+C:\Code\PET\TicketBookingSystem\APP\DB\bin\Debug\net8.0\DB.deps.json
+C:\Code\PET\TicketBookingSystem\APP\DB\bin\Debug\net8.0\DB.dll
+C:\Code\PET\TicketBookingSystem\APP\DB\bin\Debug\net8.0\DB.pdb
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\DB.csproj.AssemblyReference.cache
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\DB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\DB.AssemblyInfoInputs.cache
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\DB.AssemblyInfo.cs
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\DB.csproj.CoreCompileInputs.cache
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\DB.sourcelink.json
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\DB.dll
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\refint\DB.dll
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\DB.pdb
+C:\Code\PET\TicketBookingSystem\APP\DB\obj\Debug\net8.0\ref\DB.dll
