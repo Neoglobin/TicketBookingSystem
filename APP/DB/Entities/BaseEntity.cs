@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DB.Entities
 {
-    public abstract class BaseEntity
+    public class BaseEntity
     {
         public Guid Id { get; set; }
 
@@ -17,5 +17,18 @@ namespace DB.Entities
         public DateTime ModifiedOn { get; set; }
 
         public Guid ModifiedBy { get; set; }
+        
+        public void SetEntityDefValues()
+        {
+            Id = Guid.NewGuid();
+            CreatedOn = DateTime.UtcNow;
+            ModifiedOn = DateTime.UtcNow;
+        }
+
+        public async Task<bool> SaveAsync(AppDbContext dbContext)
+        {
+            await dbContext.AddAsync(this);
+            return (await dbContext.SaveChangesAsync() > 0);
+        }
     }
 }

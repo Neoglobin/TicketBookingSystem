@@ -1,0 +1,16 @@
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\bin\Debug\net8.0\APP.Core.deps.json
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\bin\Debug\net8.0\APP.Core.dll
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\bin\Debug\net8.0\APP.Core.pdb
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\bin\Debug\net8.0\DB.dll
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\bin\Debug\net8.0\DB.pdb
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.csproj.AssemblyReference.cache
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.AssemblyInfoInputs.cache
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.AssemblyInfo.cs
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.csproj.CoreCompileInputs.cache
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.sourcelink.json
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.csproj.Up2Date
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.dll
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\refint\APP.Core.dll
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\APP.Core.pdb
+C:\Code\PET\TicketBookingSystem\APP\APP.Core\obj\Debug\net8.0\ref\APP.Core.dll

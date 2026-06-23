@@ -137,3 +137,15 @@ C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeA
 C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Npgsql.dll
 C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\APP.Core.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\APP.Core.pdb
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\BCrypt-Net-Next.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\FluentValidation.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Code\PET\TicketBookingSystem\APP\API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
