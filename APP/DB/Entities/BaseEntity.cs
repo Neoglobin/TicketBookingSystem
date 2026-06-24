@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DB.Interfaces;
 
 namespace DB.Entities
 {
@@ -20,14 +21,31 @@ namespace DB.Entities
         
         public void SetEntityDefValues()
         {
-            Id = Guid.NewGuid();
-            CreatedOn = DateTime.UtcNow;
+            if (this.Id == Guid.Empty)
+            {
+                Id = Guid.NewGuid();
+            }
+            
+            CreatedOn = this.CreatedOn == default ? DateTime.UtcNow : this.CreatedOn;
             ModifiedOn = DateTime.UtcNow;
         }
 
-        public async Task<bool> SaveAsync(AppDbContext dbContext)
+        protected async Task<bool> SaveAsync(AppDbContext dbContext)
         {
-            await dbContext.AddAsync(this);
+            if (this.Id != Guid.Empty)
+            {
+                SetEntityDefValues();
+                await Task.Run(() =>
+                {
+                    dbContext.Update(this);
+                });
+            }
+            else
+            {
+                SetEntityDefValues();
+                await dbContext.AddAsync(this);
+            }
+            
             return (await dbContext.SaveChangesAsync() > 0);
         }
     }

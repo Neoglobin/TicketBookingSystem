@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DB.Interfaces;
 
 namespace DB.Entities
 {
-    public class Event : BaseEntity
+    public class Event : BaseEntity, IEntityOperation
     {
         public string Title { get; set; } = string.Empty;
 
@@ -15,5 +16,10 @@ namespace DB.Entities
         public DateTime StartDate { get; set; }
 
         public string Location { get; set; } = string.Empty;
+
+        public new async Task<bool> SaveAsync(AppDbContext dbContext)
+        {
+            return await base.SaveAsync(dbContext);
+        }
     }
 }

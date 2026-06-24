@@ -7,7 +7,7 @@ namespace DB
         : DbContext(options)
     {
         public DbSet<User> User { get; set; } 
-        
+        public DbSet<Event> Event { get; set; } 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(

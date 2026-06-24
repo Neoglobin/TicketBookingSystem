@@ -7,6 +7,7 @@ using DB;
 using DB.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace API.Controllers;
@@ -30,10 +31,8 @@ public class UserController : ControllerBase
     {
         try
         {
-            var userModel = UserModel.Create(request.Email, request.Name, request.Password);
-            var userEntity = userModel.GetEntityInstance<User>();
-
-            return Ok(await userModel.SaveAsync(userEntity, _dbContext));
+            var service = new UserService(_dbContext);
+            return Ok(await service.Register(request.Email, request.Name, request.Password));
         }
         catch (Exception ex)
         {
@@ -46,14 +45,9 @@ public class UserController : ControllerBase
     {
         try
         {
-            var userService = new UserService(_dbContext);
-            var user = await userService.GetByEmailAsync(request.Email);
-
-            if (!AuthHelper.Verify(request.Password, user.PasswordHash))
-            {
-                return BadRequest("Incorrect user password");
-            }
-
+            var service = new UserService(_dbContext);
+            var user = await service.GetVerifiedUser(request.Email, request.Password);
+            
             string jwt = _authService.GenerateJWT(user);
             HttpContext.Response.Cookies.Append("TBSCRT", jwt);
 
@@ -67,12 +61,11 @@ public class UserController : ControllerBase
 
     [Authorize]
     [HttpGet("GetAll")]
-    public async Task<ActionResult<List<User>>> GetAllUsersAsync()
+    public async Task<ActionResult<List<User>>> GetAllAsync()
     {
         try
         {
-            var service = new UserService(_dbContext);
-            return Ok(await service.GetAllUsersAsync());
+            return Ok(await _dbContext.User.AsNoTracking().ToListAsync());
         }
         catch (Exception ex)
         {

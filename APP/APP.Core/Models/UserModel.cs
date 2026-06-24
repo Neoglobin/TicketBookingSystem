@@ -6,7 +6,7 @@ using FluentValidation;
 
 namespace APP.Core.Models;
 
-public class UserModel : BaseModel
+public class UserModel
 {
     public string Email { get; set; }
     
@@ -25,7 +25,7 @@ public class UserModel : BaseModel
     {
         var userModel = new UserModel(email, name, password);
 
-        if (userModel.IsUserValidationPassed(out var validationError))
+        if (!userModel.ValidateUser(out var validationError))
         {
             throw new ValidationException(validationError);
         }
@@ -33,17 +33,7 @@ public class UserModel : BaseModel
         return userModel;
     }
     
-    public async Task<bool> SaveAsync(User entity, AppDbContext dbContext)
-    {
-        entity.Email = this.Email;
-        entity.Name = this.Name;
-        entity.PasswordHash = AuthHelper.HashUserPassword(this.Password);
-        
-        return await SaveEntityAsync(entity, dbContext);
-    }
-
-    
-    private bool IsUserValidationPassed(out string validationError)
+    private bool ValidateUser(out string validationError)
     {
         bool isValidationPassed = true;
         string error = "";
