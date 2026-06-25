@@ -146,7 +146,7 @@ namespace DB.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid?>("EventId")
+                    b.Property<Guid>("EventId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("ModifiedBy")
@@ -155,14 +155,13 @@ namespace DB.Migrations
                     b.Property<DateTime>("ModifiedOn")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Number")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Row")
                         .HasColumnType("integer");
 
-                    b.Property<Guid?>("StatusId")
+                    b.Property<Guid>("StatusId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
@@ -271,11 +270,15 @@ namespace DB.Migrations
                 {
                     b.HasOne("DB.Entities.Event", "Event")
                         .WithMany()
-                        .HasForeignKey("EventId");
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DB.Entities.SeatStatus", "Status")
                         .WithMany()
-                        .HasForeignKey("StatusId");
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Event");
 

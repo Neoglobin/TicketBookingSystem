@@ -28,19 +28,17 @@ public class EventController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("AddEvent")]
-    public async Task<ActionResult<bool>> AddAsync(AddEventRequest request)
+    [HttpPost("Event")]
+    public async Task<ActionResult<Event>> Get(Guid id)
     {
+        if (id == Guid.Empty)
+        {
+            return BadRequest("Incorrect or empty id was given");
+        }
+
         try
         {
-            var entity = new Event();
-            
-            entity.Title = request.Title;
-            entity.Description = request.Description;
-            entity.StartDate = request.StartDate;
-            entity.Location = request.Location;
-
-            return Ok(await entity.SaveAsync(dbContext));
+            return Ok(await dbContext.Event.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync());
         }
         catch (Exception ex)
         {
@@ -49,7 +47,30 @@ public class EventController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpPut]
+    [HttpPost("Add")]
+    public async Task<ActionResult<bool>> AddAsync(AddEventRequest request)
+    {
+        try
+        {
+            var entity = new Event();
+            var seatService = new SeatService(dbContext);
+            
+            entity.Title = request.Title;
+            entity.Description = request.Description;
+            entity.StartDate = request.StartDate;
+            entity.Location = request.Location;
+            
+            await entity.SaveAsync(dbContext);
+            return Ok(await seatService.GenerateEventSeats(entity));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [Authorize]
+    [HttpPut("Update")]
     public async Task<ActionResult<bool>> UpdateAsync(Guid id, [FromBody] UpdateEventRequest request)
     {
         if (id == Guid.Empty)
@@ -68,6 +89,25 @@ public class EventController(AppDbContext dbContext) : ControllerBase
             entity.Location = request.Location;
 
             return Ok(await entity.SaveAsync(dbContext));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [Authorize]
+    [HttpDelete("Delete")]
+    public async Task<ActionResult<bool>> DeleteAsync(Guid id)
+    {
+        if (id == Guid.Empty)
+        {
+            return BadRequest("Incorrect or default id was given");
+        }
+
+        try
+        {
+            return Ok((await dbContext.Event.AsNoTracking().Where(x => x.Id == id).ExecuteDeleteAsync()) > 0);
         }
         catch (Exception ex)
         {

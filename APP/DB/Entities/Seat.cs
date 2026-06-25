@@ -8,12 +8,16 @@ namespace DB.Entities
 {
     public class Seat : BaseEntity
     {
+        public Guid EventId { get; set; } = Guid.Empty;
+        
         public Event? Event { get; set; }
 
         public int Row { get; set; } = 0;
 
-        public string Number { get; set; } = string.Empty;
+        public int Number { get; set; } = 0;
 
+        public Guid StatusId { get; set; } = Guid.Empty;
+        
         public SeatStatus? Status { get; set; }
     }
 }

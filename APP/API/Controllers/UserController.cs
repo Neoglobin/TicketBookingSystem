@@ -58,18 +58,4 @@ public class UserController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
-
-    [Authorize]
-    [HttpGet("GetAll")]
-    public async Task<ActionResult<List<User>>> GetAllAsync()
-    {
-        try
-        {
-            return Ok(await _dbContext.User.AsNoTracking().ToListAsync());
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
-    }
 }

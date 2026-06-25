@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DB.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -87,10 +87,10 @@ namespace DB.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    EventId = table.Column<Guid>(type: "uuid", nullable: true),
+                    EventId = table.Column<Guid>(type: "uuid", nullable: false),
                     Row = table.Column<int>(type: "integer", nullable: false),
-                    Number = table.Column<string>(type: "text", nullable: false),
-                    StatusId = table.Column<Guid>(type: "uuid", nullable: true),
+                    Number = table.Column<int>(type: "integer", nullable: false),
+                    StatusId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -103,12 +103,14 @@ namespace DB.Migrations
                         name: "FK_Seat_Event_EventId",
                         column: x => x.EventId,
                         principalTable: "Event",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Seat_SeatStatus_StatusId",
                         column: x => x.StatusId,
                         principalTable: "SeatStatus",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
