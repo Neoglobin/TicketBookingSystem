@@ -11,8 +11,8 @@ namespace API.Controllers;
 public class SeatController(AppDbContext dbContext) : ControllerBase
 {
     [Authorize]
-    [HttpPost("GetAvailable")]
-    public async Task<ActionResult<List<Seat>>> GetAvailableSeats(Guid eventId)
+    [HttpGet("{eventId:guid}/available")]
+    public async Task<ActionResult<List<Seat>>> Get(Guid eventId)
     {
         if (eventId == Guid.Empty)
         {

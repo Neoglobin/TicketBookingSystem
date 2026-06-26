@@ -14,7 +14,7 @@ namespace API.Controllers;
 public class OrderController(AppDbContext dbContext) : ControllerBase
 {
     [Authorize]
-    [HttpPost("Add")]
+    [HttpPost("add")]
     public async Task<ActionResult<bool>> Add(AddOrderRequest request)
     {
         try
@@ -42,7 +42,7 @@ public class OrderController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpPut("Update")]
+    [HttpPut("update")]
     public async Task<ActionResult<bool>> Update(Guid orderId, UpdateOrderRequest request)
     {
         try
@@ -63,7 +63,7 @@ public class OrderController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpPut("Cancel")]
+    [HttpPut("cancel")]
     public async Task<ActionResult<bool>> Cancel(Guid orderId)
     {
         try
@@ -81,7 +81,7 @@ public class OrderController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpGet("GetUserOrders")]
+    [HttpGet("user_orders")]
     public async Task<ActionResult<List<Order>>> GetUserOrders()
     {
         try

@@ -26,7 +26,7 @@ public class UserController : ControllerBase
     }
     
     
-    [HttpPost("Register")]
+    [HttpPost("register")]
     public async Task<ActionResult<bool>> Register(RegisterUserRequest request)
     {
         try
@@ -40,7 +40,7 @@ public class UserController : ControllerBase
         }
     }
 
-    [HttpPost("Login")]
+    [HttpPost("login")]
     public async Task<ActionResult<bool>> Login(LoginUserRequest request)
     {
         try
@@ -60,7 +60,7 @@ public class UserController : ControllerBase
     }
 
     [Authorize]
-    [HttpGet("Logout")]
+    [HttpGet("logout")]
     public async Task<ActionResult<bool>> Logout()
     {
         try

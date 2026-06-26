@@ -14,7 +14,7 @@ namespace API.Controllers;
 public class EventController(AppDbContext dbContext) : ControllerBase
 {
     [Authorize]
-    [HttpGet("Events")]
+    [HttpGet("events")]
     public async Task<ActionResult<List<Event>>> GetAllAsync()
     {
         try
@@ -28,7 +28,7 @@ public class EventController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("Event")]
+    [HttpGet("{id:guid}/event")]
     public async Task<ActionResult<Event>> Get(Guid id)
     {
         if (id == Guid.Empty)
@@ -47,7 +47,7 @@ public class EventController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("Add")]
+    [HttpPost("add")]
     public async Task<ActionResult<bool>> AddAsync(AddEventRequest request)
     {
         try
@@ -70,7 +70,7 @@ public class EventController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpPut("Update")]
+    [HttpPut("update")]
     public async Task<ActionResult<bool>> UpdateAsync(Guid id, [FromBody] UpdateEventRequest request)
     {
         if (id == Guid.Empty)
@@ -97,7 +97,7 @@ public class EventController(AppDbContext dbContext) : ControllerBase
     }
 
     [Authorize]
-    [HttpDelete("Delete")]
+    [HttpDelete("delete")]
     public async Task<ActionResult<bool>> DeleteAsync(Guid id)
     {
         if (id == Guid.Empty)
