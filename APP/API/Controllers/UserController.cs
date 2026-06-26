@@ -58,4 +58,19 @@ public class UserController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [Authorize]
+    [HttpGet("Logout")]
+    public async Task<ActionResult<bool>> Logout()
+    {
+        try
+        {
+            HttpContext.Response.Cookies.Delete("TBSCRT");
+            return Ok(true);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 }

@@ -7,7 +7,13 @@ namespace DB
         : DbContext(options)
     {
         public DbSet<User> User { get; set; } 
+        
         public DbSet<Event> Event { get; set; } 
+        
+        public DbSet<Seat> Seat { get; set; }
+        
+        public DbSet<Order> Order { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(
